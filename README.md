@@ -46,7 +46,7 @@ document.body.addEventListener('click',()=>{
   clickTimer=setTimeout(()=>{clickTimer=null;let c=document.getElementById('clock');c.style.opacity=c.style.opacity=='0'?'1':'0'},250);
 });
 function clock(){let n=new Date();document.getElementById('time').textContent=String(n.getHours()).padStart(2,'0')+':'+String(n.getMinutes()).padStart(2,'0');document.getElementById('date').textContent=n.toLocaleDateString('en-US',{weekday:'long',day:'numeric',month:'long'})}
-setInterval(clock,1000);clock();
+setInterval(clock,1000);clock();<div class="btns"><button onclick="changeBg(event)">خلفية عشوائية 🔄</button><button onclick="downloadBg(event)">تنزيل ⬇</button></div>
 </script>
 </body>
 </html>
