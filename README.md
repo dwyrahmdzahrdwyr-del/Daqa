@@ -36,9 +36,10 @@ header{position:fixed;top:0;left:0;right:0;display:flex;justify-content:space-be
 <div class="hint" id="hint">كليك يخفي / دبل كليك الساعة قدام وورا</div>
 <div class="btns"><button onclick="changeBg()">خلفية عشوائية 🔄</button><button onclick="downloadBg()">تنزيل ⬇</button></div>
 <script>
-const imgs=["https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920","https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920","https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920","https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920","https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920","https://images.unsplash.com/photo-1446776877081-df47d0f0f7a9?w=1920"];
-function changeBg(){document.getElementById('bg').style.backgroundImage=`url('${imgs[Math.floor(Math.random()*imgs.length)]}')`}
-function downloadBg(){let a=document.createElement('a');a.href=document.getElementById('bg').style.backgroundImage.slice(5,-2) || imgs[0];a.download='daqa.jpg';a.click()}
+const imgs=["https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1920","https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1920","https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1920","https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1920","https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920","https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1920"];
+let cur=0;
+function changeBg(e){if(e) e.stopPropagation();cur=(cur+1)%imgs.length;document.getElementById('bg').style.backgroundImage=`url('${imgs[cur]}')`}
+function downloadBg(e){if(e) e.stopPropagation();let a=document.createElement('a');a.href=imgs[cur];a.target='_blank';a.click()}
 let clickTimer=null;
 document.body.addEventListener('click',()=>{
   if(clickTimer){clearTimeout(clickTimer);clickTimer=null;let c=document.getElementById('clock');c.style.zIndex=c.style.zIndex=='0'?'5':'0';return}
